@@ -2,7 +2,7 @@ import { styles } from '../Notes.module.css';
 
 async function getNote(noteId: string) {
   const res = await fetch(
-    'DB-CONNECTION-LINK-WITH-SLASH-ID',
+    'http://127.0.0.1:8090/api/collections/notes/records/${noteId}',
     {
       next: { revalidate: 10 },
     }
