@@ -26,18 +26,10 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="en">
         <body className={inter.className}>
-          <main>
-            <nav>
-              <Link href="/">
-                Home
-              </Link>
-              <Link href="/notes">
-                Notes
-              </Link>
-            </nav>
-            {children}
-          </main>
-          <footer>
+          <div className="container">
+            <NavMenu />
+            <main>{children}</main>
+            <footer>
               <p>
                 Created for the{' '}
                 <Link href="https://fireship.io">
@@ -64,6 +56,7 @@ export default function RootLayout({
                 </li>
               </ul>
             </footer>
+          </div>
         </body>
       </html>
     </AuthProvider>
