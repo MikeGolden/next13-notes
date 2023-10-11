@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'About NextSpace',
 };
 
-export default function Blog() {
+export default function About() {
   return (
     <div>
       <h1>About Us</h1>
