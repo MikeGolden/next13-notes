@@ -1,3 +1,8 @@
+'use client';
+
+import Button from "@/components/ui/Button";
+import { signOut } from "next-auth/react";
+
 export default function Home() {
   return (
     <div>
@@ -6,6 +11,7 @@ export default function Home() {
         A next-gen social media app to connect with frens inspired by MySpace
       </p>
       <p>To get started, sign up for an account</p>
+      <button onClick={() => signOut()}>Sign out</button>      
     </div>
   );
 }

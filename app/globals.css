@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+  }
+}
+
 :root {
   --link-color: #1d4ed8;
   --dark-color: #00332a;
@@ -10,85 +20,106 @@
     box-sizing: border-box;
   }
   
-  html,
-  body {
-    max-width: 100vw;
-    overflow-x: hidden;
-    background-color: var(--background);
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-      Helvetica Neue, sans-serif;
-      padding: 0 2rem;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+    padding: 0 2rem;
+}
   
-  a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-  }
+a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
   
-  main {
-    min-height: 100vh;
-    padding: 1rem 0;
-    background-color: var(--background);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
+main {
+  min-height: 100vh;
+  padding: 1rem 0;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
   
-  input, textarea { 
-    display: block;
-    max-width: 300px;
-    margin: 0.5rem 0;
-  }
+input, textarea { 
+  display: block;
+  max-width: 300px;
+  margin: 0.5rem 0;
+}
   
-  button {
-    background-color: #000000;
-    border: none;
-    padding: 0.5rem 2rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-  }
+button {
+  background-color: #000000;
+  border: none;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
   
-  nav a {
-    font-weight: bold;
-    margin: 0 0.5rem;
-    text-decoration: underline;
-  }
+nav a {
+  font-weight: bold;
+  margin: 0 0.5rem;
+  text-decoration: underline;
+}
 
-  footer {
-    text-align: center;
-    font-size: 0.8rem;
-  }
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+}
 
-  footer ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
 
-  footer li {
-    padding: 0.1rem;
-  }
+footer li {
+  padding: 0.1rem;
+}
 
-  label, textarea, input {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+label, textarea, input {
+  display: block;
+  margin-bottom: 0.5rem;
+}
 
-  .container {
-    width: 810px;
-    max-width: 100%;
-    margin: 0 auto 10px;
-  }
+.container {
+  width: 810px;
+  max-width: 100%;
+  margin: 0 auto 10px;
+}
 
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
+.scrollbar-w-2::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
+  --bg-opacity: 1;
+  background-color: #f7fafc;
+  background-color: rgba(247, 250, 252, var(--bg-opacity));
+}
+
+.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
+  --bg-opacity: 1;
+  background-color: #edf2f7;
+  background-color: rgba(237, 242, 247, var(--bg-opacity));
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
   }
+}
