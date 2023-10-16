@@ -285,13 +285,13 @@ export default function HomePage({ numStars }: { numStars: string }) {
           <Button
             className="font-medium bg-gradient-to-r from-pink-500 to-yellow-600 text-white shadow-lg"
             onClick={() => 
-              window.open("https://github.com/MikeGolden/next-notes")
+              window.open("https://github.com/MikeGolden/next13-notes")
             }
           >
             Source Code on Github
           </Button>
 
-          <Link href="https://github.com/MikeGolden/next-notes">
+          <Link href="https://github.com/MikeGolden/next13-notes">
             <p className="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500 pr-2">
               {numStars} stars on Github
             </p>

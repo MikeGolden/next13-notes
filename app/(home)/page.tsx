@@ -2,7 +2,7 @@ import HomePage from "./HomePage";
 
 async function getStars() {
   const res = await fetch(
-    "https://api.github.com/repos/MikeGolden/next-notes",
+    "https://api.github.com/repos/MikeGolden/next13-notes",
     { next: { revalidate: 60 } }
   );
   const data = await res.json();
