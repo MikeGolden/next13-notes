@@ -53,4 +53,107 @@ export default function AddPost(): JSX.Element {
     setEnhancing(false);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    setError(false);
+
+    if (content.length < 1) {
+      setErrorMessage("Post cannot be empty.");
+      setError(true);
+    } else if (filter.isProfane(content)) {
+      setErrorMessage("Profanity is not allowed.");
+      setError(true);
+    } else {
+      try {
+        const filteredContent = filter.clean(content);
+        const res = await fetch("/api/addPost", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: filteredContent,
+          }),
+        });
+        if (res.ok) {
+          setContent("");
+          router.refresh();
+        }
+        setError(false);
+      } catch {
+        setErrorMessage("Error creating post.");
+        setError(true);
+      }
+    }
+
+    setLoading(false);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+      <Textarea
+        validationState={error ? "invalid" : "valid"}
+        errorMessage={error && errorMessage}
+        className="mt-6"
+        size="lg"
+        variant="bordered"
+        labelPlacement="outside"
+        isDisabled={!session || enhancing}
+        label={session ? "Write your thoughts:" : "Please sign in to post."}
+        placeholder={session ? "Enter your amazing ideas..." : ""}
+        value={content}
+        maxLength={300}
+        onChange={(e) => setContent(e.target.value)}
+      />
+      <Spacer y={0.5} />
+      <div className="row flex-wrap flex items-center">
+        <Popover isOpen={error} onOpenChange={setError} placement="right">
+          <PopoverTrigger>
+            <Button
+              className="font-medium"
+              color="primary"
+              type="submit"
+              isDisabled={!session || enhancing}
+              // auto
+              style={{ minWidth: "100px" }}
+            >
+              {loading ? <Spinner size="sm" /> : "Post"}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <p className="p-2">{errorMessage}</p>
+          </PopoverContent>
+        </Popover>
+
+        <Popover
+          isOpen={enhanceError}
+          onOpenChange={enhanceError ? setEnhanceError : undefined}
+          placement="right"
+        >
+          <PopoverTrigger>
+            <Button
+              // color="gradient"
+              isDisabled={!session || enhancing}
+              style={{ marginLeft: 10, minWidth: "150px" }}
+              onPress={enhanceWithAI}
+              // auto
+              // shadow
+              className="font-medium bg-gradient-to-r from-pink-700 to-purple-600 text-white shadow-lg"
+            >
+              {enhancing ? <Spinner size="sm" /> : "Enhance with AI"}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <p className="p-2">Error enhancing post. Please try again.</p>
+          </PopoverContent>
+        </Popover>
+
+        <p className="ml-auto">{(content && content.length) || "0"}/300</p>
+      </div>
+
+      <Spacer y={2} />
+    </form>
+  );
 }
