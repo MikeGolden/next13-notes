@@ -5,6 +5,8 @@ import Link from 'next/link'
 import AuthProvider from './AuthProvider';
 import NavMenu from '@/app/NavMenu';
 import Providers from '@/components/Providers'
+import ProvidersWrapper from './ProvidersWrapper';
+import Nav from './Nav';
 
 const inter = Inter({ subsets: ['latin'] })
 const myFont = Open_Sans({ weight: '400', subsets: ['latin'] });
@@ -12,6 +14,27 @@ const myFont = Open_Sans({ weight: '400', subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Note taking app, social media and chat app',
   description: 'Welcome to hextjs hell',
+  keywords: [
+    "Next.js",
+    "React",
+    "Typescript",
+    "Server Components",
+    "NextUI",
+    "NextAuth",
+    "Prisma",
+    "PostgreSQL",
+    "OpenAI",
+    "GPT",
+    "Stripe",
+  ],
+  authors: [
+    {
+      name: "Mike Goldenberg",
+      url: "https://github.com/MikeGolden",
+    },
+  ],
+  creator: "Mike Goldenberg",
+  publisher: "Mike Goldenberg",
 }
 
 interface Props {
@@ -28,8 +51,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="container">
           <AuthProvider>
+          <ProvidersWrapper>
+            <Nav />
             <NavMenu />
             <main>{children}</main>
+          </ProvidersWrapper>
           </AuthProvider>
           <Providers>{children}</Providers>
           <footer>
